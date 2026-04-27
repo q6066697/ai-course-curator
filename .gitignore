@@ -1,0 +1,31 @@
+# Секреты и окружение
+.env
+.env.local
+*.key
+
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+env/
+.pytest_cache/
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Vector store и логи (артефакты выполнения, не код)
+vectorstore/
+logs.json
+*.db
+*.sqlite
+
+# Системное
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+*.swp
+
+ai-course-curator.zip

@@ -1,0 +1,12 @@
+streamlit>=1.39
+python-dotenv>=1.0
+openai>=1.50
+tiktoken>=0.7
+
+langchain>=0.3
+langchain-community>=0.3
+langchain-openai>=0.2
+langchain-text-splitters>=0.3
+faiss-cpu>=1.8
+
+pandas>=2.2

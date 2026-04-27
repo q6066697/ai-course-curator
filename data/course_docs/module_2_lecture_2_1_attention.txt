@@ -1,0 +1,40 @@
+Module 2: Transformer Architecture
+Lecture 2.1: Attention Mechanism
+
+The attention mechanism is the core idea behind modern NLP models. It lets a
+model decide which parts of the input matter most for the current prediction
+step, instead of treating every word equally.
+
+Why it matters:
+Before attention, sequence models (RNNs, LSTMs) processed text token by token,
+losing information about distant words. Attention lets the model "look back" at
+any earlier token directly, no matter how far away it is.
+
+How it works (in plain terms):
+1. For each token in the input, the model produces three vectors: query, key,
+   and value.
+2. To decide how relevant token A is to token B, the model takes the dot product
+   of A's query and B's key — this gives an attention score.
+3. The scores are normalized via softmax, so they sum to 1 — these are the
+   attention weights.
+4. The output is a weighted sum of the value vectors using those weights.
+
+Self-attention vs. cross-attention:
+- Self-attention: tokens attend to other tokens in the same sequence (used in
+  encoders).
+- Cross-attention: tokens in one sequence attend to tokens in another (used in
+  encoder-decoder models like translation).
+
+Why this is powerful:
+- Captures long-range dependencies — the word "bank" in "I deposited at the
+  bank" can attend to "deposited" to disambiguate from "river bank".
+- Parallelizable — unlike RNNs, attention computes all positions simultaneously,
+  which is why transformers train so much faster.
+
+Reference:
+The seminal paper is "Attention Is All You Need" (Vaswani et al., 2017), which
+introduced the Transformer architecture and replaced recurrence with attention
+entirely.
+
+In the next lecture we will look at multi-head attention and how it lets the
+model attend to different relationships in parallel.

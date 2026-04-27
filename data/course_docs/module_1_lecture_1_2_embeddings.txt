@@ -1,0 +1,37 @@
+Module 1: Introduction to NLP
+Lecture 1.2: Embeddings and Vector Search
+
+Embeddings are vector representations of text. They capture the semantic meaning
+of words, phrases, or even entire documents in a form that machines can compare
+mathematically.
+
+The key idea: words with similar meanings end up close together in the vector
+space. "King" and "queen" will be near each other; "king" and "potato" will not.
+
+How embeddings are produced:
+- Models like OpenAI's text-embedding-ada-002 take input text and return a fixed-
+  size vector (e.g., 1536 dimensions).
+- The vector is a list of floating-point numbers — there's nothing humanly readable
+  in it, but the geometry of the space carries meaning.
+
+Use cases in this course:
+- Semantic search across course materials (find lectures by meaning, not keywords)
+- Clustering of student questions to identify common topics
+- Retrieval-Augmented Generation (RAG): finding relevant chunks of text to feed
+  into an LLM as context
+
+Practical example in Python:
+
+    from openai import OpenAI
+    client = OpenAI()
+    resp = client.embeddings.create(
+        model="text-embedding-ada-002",
+        input="What are embeddings?"
+    )
+    vector = resp.data[0].embedding   # list of 1536 floats
+
+To compare two embeddings, you typically use cosine similarity. Values close to 1
+mean the texts are very similar in meaning; values near 0 mean unrelated.
+
+In Module 2 we will see how to store these vectors in a vector database (FAISS or
+Chroma) and run efficient nearest-neighbor search.
